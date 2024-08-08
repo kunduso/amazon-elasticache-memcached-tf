@@ -4,7 +4,7 @@ resource "aws_elasticache_cluster" "cache_cluster" {
   engine               = "memcached"
   node_type            = "cache.m4.large"
   num_cache_nodes      = 2
-  parameter_group_name = "default.memcached1.4"
+  parameter_group_name = "default.memcached1.6"
   port                 = 11211
   security_group_ids   = [aws_security_group.custom_sg.id]
 }
