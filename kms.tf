@@ -21,8 +21,20 @@ data "aws_iam_policy_document" "encrypt_ssm_policy" {
       type        = "AWS"
       identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
     }
-    actions   = ["kms:*"]
-    resources = ["*"]
+    actions = [
+      "kms:Describe*",
+      "kms:List*",
+      "kms:Get*",
+      "kms:RotateKey",
+      "kms:EnableKey",
+      "kms:DisableKey",
+      "kms:Encrypt",
+      "kms:Decrypt",
+      "kms:ReEncrypt*",
+      "kms:PutKeyPolicy",
+      "kms:DeleteAlias"
+    ]
+    resources = [aws_kms_key.encrypt_ssm.arn]
   }
 
   statement {
@@ -39,7 +51,7 @@ data "aws_iam_policy_document" "encrypt_ssm_policy" {
       "kms:GenerateDataKey*",
       "kms:DescribeKey"
     ]
-    resources = ["*"]
+    resources = [aws_kms_key.encrypt_ssm.arn]
     condition {
       test     = "StringEquals"
       variable = "kms:CallerAccount"
