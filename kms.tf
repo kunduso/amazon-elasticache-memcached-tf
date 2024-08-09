@@ -2,7 +2,6 @@ resource "aws_kms_key" "encrypt_ssm" {
   enable_key_rotation     = true
   description             = "Key to encrypt ssm"
   deletion_window_in_days = 7
-  #checkov:skip=CKV2_AWS_64: Not including a KMS Key policy
 }
 resource "aws_kms_alias" "encryption_secret" {
   name          = "alias/${var.name}"
