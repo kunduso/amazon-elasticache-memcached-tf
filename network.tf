@@ -48,3 +48,14 @@ resource "aws_route_table_association" "private" {
   subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = aws_route_table.this_rt_private.id
 }
+resource "aws_internet_gateway" "this_igw" {
+  vpc_id = aws_vpc.this.id
+  tags = {
+    "Name" = "${var.name}-gateway"
+  }
+}
+resource "aws_route" "internet_route" {
+  destination_cidr_block = "0.0.0.0/0"
+  route_table_id         = aws_route_table.this_rt.id
+  gateway_id             = aws_internet_gateway.this_igw.id
+}
