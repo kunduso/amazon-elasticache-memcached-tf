@@ -35,6 +35,15 @@ resource "aws_instance" "write_instance" {
   tags = {
     Name = "${var.name}-write-instance"
   }
+  # checkov:skip=CKV_AWS_88: "EC2 instance should not have public IP."
+  # This instance has the public IP to install the Python packages.
+  # The alternative is to use the NAT instance to install the Python packages
+  # but that would increase the cost and deviate from the primary objective of this use case.
+  # Alternatively, I could create a custom AMI with the Python packages installed and use that instead.
+  # That too would have deviated from the primary objective.
+  # So, I am leaving it as is.
+  # Moreover, the security group attached to the instance has no ingress on any port which
+  # offers some protection from unauthorized access.
 }
 
 resource "aws_instance" "read_instance" {
@@ -61,4 +70,13 @@ resource "aws_instance" "read_instance" {
   tags = {
     Name = "${var.name}-read-instance"
   }
+  # checkov:skip=CKV_AWS_88: "EC2 instance should not have public IP."
+  # This instance has the public IP to install the Python packages.
+  # The alternative is to use the NAT instance to install the Python packages
+  # but that would increase the cost and deviate from the primary objective of this use case.
+  # Alternatively, I could create a custom AMI with the Python packages installed and use that instead.
+  # That too would have deviated from the primary objective.
+  # So, I am leaving it as is.
+  # Moreover, the security group attached to the instance has no ingress on any port which
+  # offers some protection from unauthorized access.
 }
