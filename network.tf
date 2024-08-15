@@ -1,6 +1,6 @@
 
 resource "aws_vpc" "this" {
-  #checkov:skip=CKV2_AWS_11: This is non prod and hence disabled.
+  # checkov:skip=CKV2_AWS_11: This is non prod and hence disabled.
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -47,4 +47,15 @@ resource "aws_route_table_association" "private" {
   count          = length(var.subnet_cidr_private)
   subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = aws_route_table.this_rt_private.id
+}
+resource "aws_internet_gateway" "this_igw" {
+  vpc_id = aws_vpc.this.id
+  tags = {
+    "Name" = "${var.name}-gateway"
+  }
+}
+resource "aws_route" "internet_route" {
+  destination_cidr_block = "0.0.0.0/0"
+  route_table_id         = aws_route_table.this_rt.id
+  gateway_id             = aws_internet_gateway.this_igw.id
 }
