@@ -1,7 +1,7 @@
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-white.svg)](https://choosealicense.com/licenses/unlicense/) [![GitHub pull-requests closed](https://img.shields.io/github/issues-pr-closed/kunduso/amazon-elasticache-memcached-tf)](https://github.com/kunduso/amazon-elasticache-memcached-tf/pulls?q=is%3Apr+is%3Aclosed) [![GitHub pull-requests](https://img.shields.io/github/issues-pr/kunduso/amazon-elasticache-memcached-tf)](https://GitHub.com/kunduso/amazon-elasticache-memcached-tf/pull/) 
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/kunduso/amazon-elasticache-memcached-tf)](https://github.com/kunduso/amazon-elasticache-memcached-tf/issues?q=is%3Aissue+is%3Aclosed) [![GitHub issues](https://img.shields.io/github/issues/kunduso/amazon-elasticache-memcached-tf)](https://GitHub.com/kunduso/amazon-elasticache-memcached-tf/issues/) 
 [![terraform-infra-provisioning](https://github.com/kunduso/amazon-elasticache-memcached-tf/actions/workflows/terraform.yml/badge.svg?branch=main)](https://github.com/kunduso/amazon-elasticache-memcached-tf/actions/workflows/terraform.yml) [![checkov-static-analysis-scan](https://github.com/kunduso/amazon-elasticache-memcached-tf/actions/workflows/code-scan.yml/badge.svg?branch=main)](https://github.com/kunduso/amazon-elasticache-memcached-tf/actions/workflows/code-scan.yml)
-
+![Image](https://skdevops.files.wordpress.com/2024/08/99-image-0.png)
 ## Introduction
 This repository contains the Terraform code to provision an Amazon ElastiCache for Memcached and all the supporting infrastructure components like Amazon VPC, subnets, and security group using Terraform.
 
