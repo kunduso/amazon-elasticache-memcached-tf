@@ -4,6 +4,7 @@
 ![Image](https://skdevops.files.wordpress.com/2024/08/99-image-0.png)
 ## Introduction
 This repository contains the Terraform code to provision an Amazon ElastiCache for Memcached and all the supporting infrastructure components like Amazon VPC, subnets, and security group using Terraform.
+<br/>I discussed the concept in detail in my notes at -[create Amazon ElastiCache for Memcached using Terraform and GitHub Actions.](http://skundunotes.com/2024/08/16/create-amazon-elasticache-for-memcached-using-terraform-and-github-actions/)
 
 Additionally, this repository includes:
 - [Checkov pipeline](https://github.com/kunduso/amazon-elasticache-memcached-tf/blob/main/.github/workflows/code-scan.yml) that helps identify security vulnerabilities and compliance issues in IaC configurations, ensuring best practices and reducing risks in cloud infrastructure setups.
