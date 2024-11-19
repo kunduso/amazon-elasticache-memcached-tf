@@ -16,6 +16,58 @@ For this code to function without errors, I created an **OpenID connect** identi
 <br />Since I used Infracost in this repository, I stored the `INFRACOST_API_KEY` as a repository secret. It is referenced in the [`terraform.yml`](https://github.com/kunduso/amazon-elasticache-memcached-tf/blob/cd2aa394bea3f3f6421cfa559f6a8b5f8b6d9ee8/.github/workflows/terraform.yml#L52) GitHub actions workflow file.
 <br />As part of the Infracost integration, I also created a `INFRACOST_API_KEY` and stored that as a GitHub Actions secret. I also managed the cost estimate process using a GitHub Actions variable `INFRACOST_SCAN_TYPE` where the value is either `hcl_code` or `tf_plan`, depending on the type of scan desired.
 <!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.61.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.61.0 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/kunduso/terraform-aws-vpc | v1.0.1 |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_elasticache_cluster.cache_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/elasticache_cluster) | resource |
+| [aws_elasticache_subnet_group.elasticache_subnet](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/elasticache_subnet_group) | resource |
+| [aws_iam_policy.ssm_parameter_policy](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/iam_policy) | resource |
+| [aws_kms_alias.encryption_secret](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/kms_alias) | resource |
+| [aws_kms_key.encrypt_ssm](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/kms_key) | resource |
+| [aws_kms_key_policy.encrypt_ssm_policy](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/kms_key_policy) | resource |
+| [aws_security_group.custom_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group) | resource |
+| [aws_security_group_rule.egress_custom_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress_custom_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.elasticache_ep](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/ssm_parameter) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.encrypt_ssm_policy](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/data-sources/region) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_access_key"></a> [access\_key](#input\_access\_key) | The access\_key that belongs to the IAM user | `string` | `""` | no |
+| <a name="input_availability_zone"></a> [availability\_zone](#input\_availability\_zone) | The availability zones for teh public subnets. | `list(any)` | <pre>[<br/>  "us-east-2a",<br/>  "us-east-2b"<br/>]</pre> | no |
+| <a name="input_name"></a> [name](#input\_name) | The name of the application. | `string` | `"app-10"` | no |
+| <a name="input_region"></a> [region](#input\_region) | Infrastructure region | `string` | `"us-east-2"` | no |
+| <a name="input_secret_key"></a> [secret\_key](#input\_secret\_key) | The secret\_key that belongs to the IAM user | `string` | `""` | no |
+| <a name="input_subnet_cidr_private"></a> [subnet\_cidr\_private](#input\_subnet\_cidr\_private) | The CIDR blocks for the private subnets. | `list(any)` | <pre>[<br/>  "12.25.15.64/27",<br/>  "12.25.15.96/27"<br/>]</pre> | no |
+| <a name="input_subnet_cidr_public"></a> [subnet\_cidr\_public](#input\_subnet\_cidr\_public) | The CIDR blocks for the public subnets. | `list(any)` | <pre>[<br/>  "12.25.15.0/27",<br/>  "12.25.15.32/27"<br/>]</pre> | no |
+| <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | The CIDR of the VPC. | `string` | `"12.25.15.0/25"` | no |
+
+## Outputs
+
+No outputs.
 <!-- END_TF_DOCS -->
 ## Usage
 Ensure that the policy attached to the IAM role whose credentials are being used in this configuration has permission to create and manage all the resources that are included in this repository.
