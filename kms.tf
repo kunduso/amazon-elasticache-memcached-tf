@@ -4,7 +4,7 @@ resource "aws_kms_key" "encrypt_ssm" {
   deletion_window_in_days = 7
 }
 resource "aws_kms_alias" "encryption_secret" {
-  name          = "alias/${var.name}"
+  name          = "alias/${var.name}-encryption-secret"
   target_key_id = aws_kms_key.encrypt_ssm.key_id
 }
 resource "aws_kms_key_policy" "encrypt_ssm_policy" {
