@@ -15,7 +15,7 @@ resource "aws_instance" "write_instance" {
   instance_type               = "t3.medium"
   ami                         = data.aws_ami.ec2_ami.id
   vpc_security_group_ids      = [aws_security_group.instance_sg.id]
-  subnet_id                   = aws_subnet.public[0].id
+  subnet_id                   = module.vpc.public_subnets[0].id
   associate_public_ip_address = true
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
   ebs_optimized               = true
@@ -50,7 +50,7 @@ resource "aws_instance" "read_instance" {
   instance_type               = "t3.medium"
   ami                         = data.aws_ami.ec2_ami.id
   vpc_security_group_ids      = [aws_security_group.instance_sg.id]
-  subnet_id                   = aws_subnet.public[1].id
+  subnet_id                   = module.vpc.public_subnets[1].id
   associate_public_ip_address = true
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
   ebs_optimized               = true
