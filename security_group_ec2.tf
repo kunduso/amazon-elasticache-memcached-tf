@@ -2,7 +2,7 @@
 resource "aws_security_group" "instance_sg" {
   name        = "${var.name}_ec2_allow_inbound_access"
   description = "manage traffic for ${var.name} EC2"
-  vpc_id      = aws_vpc.this.id
+  vpc_id      = module.vpc.vpc.id
   tags = {
     "Name" = "${var.name}-sg-ec2"
   }
