@@ -40,14 +40,23 @@ For this code to function without errors, I created an **OpenID connect** identi
 |------|------|
 | [aws_elasticache_cluster.cache_cluster](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/elasticache_cluster) | resource |
 | [aws_elasticache_subnet_group.elasticache_subnet](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/elasticache_subnet_group) | resource |
+| [aws_iam_instance_profile.ec2_profile](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_policy.ssm_parameter_policy](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/iam_policy) | resource |
+| [aws_iam_role.ec2_role](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.custom](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.ssm_policy_attachement](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_instance.read_instance](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/instance) | resource |
+| [aws_instance.write_instance](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/instance) | resource |
 | [aws_kms_alias.encryption_secret](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/kms_alias) | resource |
 | [aws_kms_key.encrypt_ssm](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/kms_key) | resource |
 | [aws_kms_key_policy.encrypt_ssm_policy](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/kms_key_policy) | resource |
 | [aws_security_group.custom_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group) | resource |
+| [aws_security_group.instance_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group) | resource |
 | [aws_security_group_rule.egress_custom_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.egress_instance_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_custom_sg](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.elasticache_ep](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/resources/ssm_parameter) | resource |
+| [aws_ami.ec2_ami](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/data-sources/ami) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.encrypt_ssm_policy](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/5.61.0/docs/data-sources/region) | data source |
